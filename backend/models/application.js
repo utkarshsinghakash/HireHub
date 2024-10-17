@@ -1,4 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
+// Your mongoose-related code goes here
 
 const applicationSchema = new mongoose.Schema(
   {
@@ -21,4 +23,4 @@ const applicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 const Application = mongoose.model("Application", applicationSchema);
-module.exports = Application;
+export default Application;

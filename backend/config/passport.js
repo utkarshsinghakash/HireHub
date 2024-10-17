@@ -1,9 +1,10 @@
-const session = require("express-session"); // Import express-session
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const User = require("../models/user");
-const jwt = require("jsonwebtoken");
+import session from "express-session";
+import passport from "passport";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20"; // Destructuring the strategy
+import User from "../models/user.js"; // Include the '.js' extension for local files
+import jwt from "jsonwebtoken";
 
+// Google OAuth Strategy Setup
 passport.use(
   new GoogleStrategy(
     {
@@ -45,6 +46,7 @@ passport.use(
   )
 );
 
+// Passport serialize and deserialize setup
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -53,4 +55,5 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-module.exports = passport;
+// Export passport as default
+export default passport;

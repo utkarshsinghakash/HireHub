@@ -1,12 +1,15 @@
-const express = require("express");
-const User = require("../models/user.js");
+import express from "express";
+import User from "../models/user.js";
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken"); //to hgenerate user token
-const isAuthenticated = require("../middlewares/isAuthenticated.js");
-const singleupload = require("../middlewares/multer.js");
-const getDataUri = require("../utils/dataUri.js");
-const cloudinary = require("../utils/cloudinary.js");
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken"; // to generate user token
+import isAuthenticated from "../middlewares/isAuthenticated.js";
+import singleupload from "../middlewares/multer.js";
+import getDataUri from "../utils/dataUri.js";
+import cloudinary from "../utils/cloudinary.js";
+
+// import passport from "passport";
+// import passportconfig from "../config/passport";
 
 // const passport = require("passport");
 // const passportconfig = require("../config/passport");
@@ -234,4 +237,4 @@ router.post(
   }
 );
 
-module.exports = router;
+export default router;

@@ -1,6 +1,6 @@
-const multer = require("multer");
-// const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const cloudinary = require("../utils/cloudinary");
+import multer from "multer";
+// import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "../utils/cloudinary.js"; // Include .js extension for local files
 const storage = multer.memoryStorage();
 
 // const storage = new CloudinaryStorage({
@@ -12,4 +12,4 @@ const storage = multer.memoryStorage();
 // });
 
 const singleupload = multer({ storage }).single("file");
-module.exports = singleupload;
+export default singleupload;

@@ -1,13 +1,12 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const Application = require("../models/application.js");
-const isAuthenticated = require("../middlewares/isAuthenticated.js");
-const Job = require("../models/job.js");
+import Application from "../models/application.js";
+import isAuthenticated from "../middlewares/isAuthenticated.js";
+import Job from "../models/job.js";
 
 router.get("/applyjob/:id", isAuthenticated, async (req, res) => {
   try {
     let userId = req.id;
-
     let jobId = req.params.id;
     let existingapplicant = await Application.findOne({
       job: jobId,
@@ -76,7 +75,7 @@ router.get("/getappliedjobs", isAuthenticated, async (req, res) => {
 });
 
 //admin wants to see all applicants of particular job
-router.get("/getApplicants/:id/applicants",isAuthenticated, async (req, res) => {
+router.get("/getApplicants/:id/applicants", isAuthenticated, async (req, res) => {
   try {
     let jobId = req.params.id;
     let job = await Job.findById(jobId).populate({
@@ -103,7 +102,7 @@ router.get("/getApplicants/:id/applicants",isAuthenticated, async (req, res) => 
   }
 });
 
-router.post("/updatestatus/:id",isAuthenticated, async (req, res) => {
+router.post("/updatestatus/:id", isAuthenticated, async (req, res) => {
   try {
     let { status } = req.body;
     let applicationId = req.params.id;
@@ -132,4 +131,4 @@ router.post("/updatestatus/:id",isAuthenticated, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router; // Change module.exports to export default

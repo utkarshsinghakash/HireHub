@@ -1,12 +1,16 @@
-const express = require("express");
+import express from "express";
+import session from "express-session";
+import passport from "passport";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import connectDB from "./utils/db.js";
+import dotenv from "dotenv";
+
+// Initialize express app
 const app = express();
-const session = require("express-session"); // Import express-session
-const passport = require("passport");
-const cookieparser = require("cookie-parser");
-const cors = require("cors");
-const connectDB = require("./utils/db.js");
-const dotenv = require("dotenv");
-dotenv.config({});
+
+// Load environment variables
+dotenv.config();
 
 const userRoute = require("./routes/user.routes.js");
 const companyRoute = require("./routes/company.routes.js");

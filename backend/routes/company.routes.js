@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const Company = require("../models/company.js");
-const isAuthenticated = require("../middlewares/isAuthenticated.js");
-const getDataUri = require("../utils/dataUri.js");
-const cloudinary = require("../utils/cloudinary.js");
-const singleupload = require("../middlewares/multer.js");
+import Company from "../models/company.js";
+import isAuthenticated from "../middlewares/isAuthenticated.js";
+import getDataUri from "../utils/dataUri.js";
+import cloudinary from "../utils/cloudinary.js";
+import singleupload from "../middlewares/multer.js";
 
 router.post("/register", isAuthenticated, async (req, res) => {
   try {
@@ -109,4 +109,5 @@ router.put("/update/:id", singleupload, isAuthenticated, async (req, res) => {
   }
 });
 
-module.exports = router;
+// Export the router
+export default router;
