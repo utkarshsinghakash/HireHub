@@ -1,12 +1,13 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import Application from "../models/application.js";
-import isAuthenticated from "../middlewares/isAuthenticated.js";
-import Job from "../models/job.js";
+const Application = require("../models/application.js");
+const isAuthenticated = require("../middlewares/isAuthenticated.js");
+const Job = require("../models/job.js");
 
 router.get("/applyjob/:id", isAuthenticated, async (req, res) => {
   try {
     let userId = req.id;
+
     let jobId = req.params.id;
     let existingapplicant = await Application.findOne({
       job: jobId,
@@ -75,32 +76,36 @@ router.get("/getappliedjobs", isAuthenticated, async (req, res) => {
 });
 
 //admin wants to see all applicants of particular job
-router.get("/getApplicants/:id/applicants", isAuthenticated, async (req, res) => {
-  try {
-    let jobId = req.params.id;
-    let job = await Job.findById(jobId).populate({
-      path: "applications",
-      options: { sort: { createdAt: -1 } },
-      populate: {
-        path: "applicant",
+router.get(
+  "/getApplicants/:id/applicants",
+  isAuthenticated,
+  async (req, res) => {
+    try {
+      let jobId = req.params.id;
+      let job = await Job.findById(jobId).populate({
+        path: "applications",
         options: { sort: { createdAt: -1 } },
-      },
-    });
-
-    if (!job) {
-      return res.status(400).json({
-        message: "Job not found",
-        success: false,
+        populate: {
+          path: "applicant",
+          options: { sort: { createdAt: -1 } },
+        },
       });
+
+      if (!job) {
+        return res.status(400).json({
+          message: "Job not found",
+          success: false,
+        });
+      }
+      return res.status(200).json({
+        job,
+        success: true,
+      });
+    } catch (err) {
+      console.log(err);
     }
-    return res.status(200).json({
-      job,
-      success: true,
-    });
-  } catch (err) {
-    console.log(err);
   }
-});
+);
 
 router.post("/updatestatus/:id", isAuthenticated, async (req, res) => {
   try {
@@ -131,4 +136,4 @@ router.post("/updatestatus/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-export default router; // Change module.exports to export default
+module.exports = router;

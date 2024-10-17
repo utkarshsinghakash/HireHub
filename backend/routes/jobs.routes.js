@@ -1,8 +1,7 @@
-import express from "express";
-import Job from "../models/job.js";
-import isAuthenticated from "../middlewares/isAuthenticated.js";
-
+const express = require("express");
+const Job = require("../models/job.js");
 const router = express.Router();
+const isAuthenticated = require("../middlewares/isAuthenticated.js");
 
 router.post("/post", isAuthenticated, async (req, res) => {
   try {
@@ -58,7 +57,7 @@ router.post("/post", isAuthenticated, async (req, res) => {
   }
 });
 
-// students finds all jobs
+//students finds all jobs
 router.get("/getAll", isAuthenticated, async (req, res) => {
   try {
     const keyword = req.query.keyword || "";
@@ -90,7 +89,7 @@ router.get("/getAll", isAuthenticated, async (req, res) => {
   }
 });
 
-// student find one job
+//student find one job
 router.get("/get/:id", isAuthenticated, async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -111,7 +110,7 @@ router.get("/get/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-// admin created all jobs
+//admin created all jobs
 router.get("/getadminjobs", isAuthenticated, async (req, res) => {
   const adminId = req.id;
   const jobs = await Job.find({ createdBy: adminId }).populate({
@@ -143,6 +142,13 @@ router.put("/update/:id", isAuthenticated, async (req, res) => {
       experience,
       position,
     } = req.body;
+
+    // if (!title || !description || !requirements || !salary || !location || !jobType || !experience || !position) {
+    //   return res.status(400).json({
+    //     message: "All fields are required",
+    //     success: false,
+    //   });
+    // }
 
     const job = await Job.findByIdAndUpdate(
       req.params.id,
@@ -180,4 +186,4 @@ router.put("/update/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-export default router; // Use export default instead of module.exports
+module.exports = router;

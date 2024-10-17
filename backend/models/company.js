@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-// Your mongoose-related code goes here
+const mongoose = require("mongoose");
 
 const companySchema = new mongoose.Schema(
   {
@@ -30,4 +28,4 @@ const companySchema = new mongoose.Schema(
   { timestamps: true }
 );
 const Company = mongoose.model("Company", companySchema);
-export default Company;
+module.exports = Company;
