@@ -1,0 +1,33 @@
+/* Fade-in effect */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Slide-up effect */
+.slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide-up.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover effect */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Add general styling for section */
+section {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7fafc; /* Light gray background */
+}

@@ -1,0 +1,30 @@
+.custom-arrow {
+  width: 30px; /* Adjust the width */
+  height: 30px; /* Adjust the height */
+
+  border-radius: 50%; /* Circular arrows */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Arrow color */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.next-arrow {
+  right: 20px; /* Positioning for next arrow */
+  top: 50%; /* Center vertically */
+}
+
+.prev-arrow {
+  left: 20px; /* Positioning for previous arrow */
+  top: 50%; /* Center vertically */
+}
+
+/* Optional: Arrow icons */
+.custom-arrow:before {
+  content: "→"; /* Right arrow */
+}
+
+.prev-arrow:before {
+  content: "←"; /* Left arrow */
+}

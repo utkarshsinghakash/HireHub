@@ -1,0 +1,30 @@
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect for Links */
+nav ul li a:hover {
+  text-decoration: underline;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 10px 0;
+  }
+  nav .max-w-7xl {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul {
+    flex-direction: column;
+    /* space-y-4; */
+  }
+  nav ul li {
+    width: 100%;
+  }
+}
