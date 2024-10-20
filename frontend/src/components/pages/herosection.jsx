@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { setsearchQuery } from "@/redux/jobSlice";
 import Slider from "react-slick";
 import heroImage from "@/assets/HeroImage.avif"; // Ensure this path is correct
-import heroImage2 from "@/assets/HeroImage2.avif"; // Ensure this path is correct
+import heroImage2 from "@/assets/Heroimage2.avif"; // Ensure this path is correct
 import heroImage3 from "@/assets/HeroImage4.avif"; // Ensure this path is correct
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
